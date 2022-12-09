@@ -4,6 +4,8 @@ require('dotenv').config();
 const port = process.env.PORT || 8080;
 const moment = require("moment");
 const sql = require("mysql");
+var os = require("os");
+var hostname = os.hostname();
 
 var connection = sql.createPool({
   // connectionLimit: 100,
@@ -27,6 +29,7 @@ app.use((req, res, next) => {
 
 app.get("/api/ping", (req, res) => {
   console.log("test");
+  console.log(hostname);
   res.send(new Date().getTime().toString());
 });
 
