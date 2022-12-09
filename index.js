@@ -6,7 +6,6 @@ const moment = require("moment");
 const sql = require("mysql");
 var os = require("os");
 var hostname = os.hostname();
-const ipAddress = req.socket.remoteAddress;
 
 var connection = sql.createPool({
   // connectionLimit: 100,
@@ -29,6 +28,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/api/ping", (req, res) => {
+  const ipAddress = req.socket.remoteAddress;
   console.log("test");
   console.log(hostname);
   console.log(ipAddress);
